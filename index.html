@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Андрей Богдевич</title>
+<meta name="description" content="Андрей Богдевич — предприниматель, собственник БелСтальИмпорт, триатлет.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+  /* Layout: one steel-grey column, mill-certificate style spec rows, race calendar as a ruled table */
+  :root {
+    --bg: #E8EAEC;
+    --surface: #F3F4F5;
+    --fg: #14191E;
+    --muted: #55606A;
+    --line: #BCC3C9;
+    --accent: #0B4F8A;
+    --accent-fg: #FFFFFF;
+    --glow: rgba(11, 79, 138, .22);
+    --glow2: rgba(176, 112, 52, .12);
+    --grain: rgba(20, 25, 30, .035);
+    --panel: rgba(255, 255, 255, .55);
+    --navbg: rgba(232, 234, 236, .88);
+    --font-display: "IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101418; --surface: #181E24; --fg: #E7EAED; --muted: #98A3AD;
+      --line: #2E3740; --accent: #6DB1EE; --accent-fg: #0B1218; --glow: rgba(109,177,238,.18); --glow2: rgba(200,140,80,.09); --grain: rgba(255,255,255,.025); --panel: rgba(24,30,36,.6); --navbg: rgba(16,20,24,.88); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101418; --surface: #181E24; --fg: #E7EAED; --muted: #98A3AD;
+    --line: #2E3740; --accent: #6DB1EE; --accent-fg: #0B1218; --glow: rgba(109,177,238,.18); --glow2: rgba(200,140,80,.09); --grain: rgba(255,255,255,.025); --panel: rgba(24,30,36,.6); --navbg: rgba(16,20,24,.88); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background:
+      radial-gradient(1100px 620px at 88% -8%, var(--glow), transparent 62%),
+      radial-gradient(900px 560px at -12% 38%, var(--glow2), transparent 60%),
+      radial-gradient(1000px 600px at 110% 92%, var(--glow), transparent 60%),
+      repeating-linear-gradient(135deg, var(--grain) 0 1px, transparent 1px 7px),
+      var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+    padding-block: 0;
+  }
+  .wrap {
+    max-width: 920px; margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .label {
+    font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* hero */
+  .hero { padding-block: 56px 48px; border-bottom: 1px solid var(--line); }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(46px, 11vw, 112px); line-height: .92; letter-spacing: -.01em;
+    margin: 18px 0 24px; text-wrap: balance;
+  }
+  .hero .role { font-size: clamp(18px, 2.6vw, 22px); max-width: 34em; margin: 0 0 28px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+  .meta span { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+  .meta b { color: var(--fg); font-weight: 500; }
+
+  /* figures */
+  .figures {
+    display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line);
+  }
+  .fig { padding: 28px 18px 28px 0; min-width: 0; }
+  .fig + .fig { padding-left: 18px; border-left: 1px solid var(--line); }
+  .fig .n {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(38px, 7vw, 60px);
+    line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+  .fig .t { font-size: 14.5px; color: var(--muted); margin-top: 8px; line-height: 1.35; }
+
+  section {
+    background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--accent);
+    padding: 44px clamp(18px, 4vw, 44px); margin-block: 24px;
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .figures { background: var(--panel); border: 1px solid var(--line); margin-top: 8px; padding-inline: clamp(14px, 3vw, 28px); }
+  h2 {
+    font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(28px, 5vw, 40px); line-height: 1; margin: 10px 0 26px;
+  }
+  p.lead { font-size: 19px; max-width: 36em; margin: 0 0 28px; }
+
+  /* spec sheet */
+  .spec { margin: 0; border-top: 2px solid var(--fg); }
+  .spec > div {
+    display: grid; grid-template-columns: 190px 1fr; gap: 6px 24px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .spec dt { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .spec dd { margin: 0; min-width: 0; }
+
+  /* principles */
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; }
+  .principles li { padding: 4px 22px 4px 0; min-width: 0; }
+  .principles li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .principles strong { display: block; font-family: var(--font-display); font-size: clamp(19px, 2.4vw, 26px); overflow-wrap: anywhere; text-transform: uppercase; line-height: 1.1; margin-bottom: 6px; }
+  .principles span { color: var(--muted); font-size: 15px; }
+
+  /* race calendar */
+  .disc { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+  .disc li { font-family: var(--font-mono); font-size: 13.5px; padding: 5px 12px; border: 1px solid var(--line); background: var(--surface); }
+  .races { border-top: 2px solid var(--fg); margin: 0; padding: 0; list-style: none; }
+  .race {
+    display: grid; grid-template-columns: 170px 1fr auto; gap: 6px 24px; align-items: baseline;
+    padding: 20px 0; border-bottom: 1px solid var(--line);
+  }
+  .race .date { font-family: var(--font-mono); font-size: 15px; font-variant-numeric: tabular-nums; }
+  .race .name { font-family: var(--font-display); font-weight: 600; font-size: 25px; line-height: 1.15; }
+  .race .place { color: var(--muted); font-size: 15px; display: block; font-family: var(--font-body); font-weight: 400; margin-top: 2px; }
+  .race .stat { font-family: var(--font-mono); font-size: 14px; text-align: right; color: var(--muted); min-width: 0; }
+  .race.done .stat { color: var(--accent-fg); background: var(--accent); padding: 4px 12px; font-weight: 500; }
+  .goal { margin: 28px 0 0; max-width: 36em; color: var(--muted); }
+
+  /* photos */
+  /* photos shown whole: each figure grows by its width/height ratio, so a row shares one height and nothing is cropped */
+  .photos { display: flex; gap: 12px; margin: 0 0 36px; align-items: flex-start; }
+  .photos .row { display: flex; gap: 12px; min-width: 0; flex-basis: 0; align-items: flex-start; }
+  .photos figure { margin: 0; min-width: 0; flex-basis: 0; }
+  .photos img { display: block; width: 100%; height: auto; max-width: 100%; background: var(--surface); }
+  .photos figcaption { font-family: var(--font-mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding-top: 8px; border-top: 2px solid var(--fg); margin-top: 10px; }
+  @media (max-width: 720px) {
+    .photos { flex-direction: column; gap: 20px; }
+    .photos .row { width: 100%; flex: none !important; }
+  }
+
+  /* hero portrait */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 32px; align-items: end; }
+  .hero-text { min-width: 0; }
+  .portrait { margin: 0; }
+  .portrait img { display: block; width: 100%; max-width: 100%; height: auto; background: var(--surface); box-shadow: 0 18px 40px -18px var(--glow); }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; }
+    .portrait { order: -1; width: min(60%, 240px); }
+  }
+
+  /* contacts */
+  .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .btn {
+    display: inline-block; padding: 12px 22px; background: var(--accent); color: var(--accent-fg);
+    text-decoration: none; font-family: var(--font-mono); font-size: 14px; letter-spacing: .04em;
+  }
+  .btn.alt { background: transparent; color: var(--fg); border: 1px solid var(--fg); }
+  .btn:hover { filter: brightness(1.12); }
+  .btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  footer { padding-block: 28px 40px; }
+
+  @media (max-width: 720px) {
+    body { font-size: 16.5px; }
+    .figures { grid-template-columns: repeat(2, 1fr); }
+    .fig:nth-child(3) { padding-left: 0; border-left: 0; }
+    .fig:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .spec > div { grid-template-columns: 1fr; gap: 2px; }
+    .principles { grid-template-columns: 1fr; gap: 20px; }
+    .principles li, .principles li + li { padding: 0; border-left: 0; }
+    .race { grid-template-columns: 1fr; gap: 4px; }
+    .race .stat { text-align: left; }
+    .race.done .stat { justify-self: start; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition: filter .15s; }
+  }
+  /* top navigation */
+  html { scroll-padding-top: calc(64px + env(safe-area-inset-top, 0px)); }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--navbg); }
+  .topnav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: var(--navbg); border-bottom: 1px solid var(--line);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  .topnav .in {
+    max-width: 920px; margin: 0 auto; min-height: 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  .brand { font-family: var(--font-display); font-weight: 700; font-size: 19px; text-transform: uppercase; color: var(--fg); text-decoration: none; white-space: nowrap; }
+  .topnav nav { display: flex; gap: 4px; overflow-x: auto; min-width: 0; scrollbar-width: none; }
+  .topnav nav a {
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--fg); text-decoration: none; padding: 8px 12px; white-space: nowrap; border-bottom: 2px solid transparent;
+  }
+  .topnav nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .topnav nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 720px) {
+    .brand { display: none; }
+    .topnav .in { justify-content: flex-start; }
+    .topnav nav a { padding: 8px 10px; font-size: 12px; }
+  }
+
+  /* facts */
+  .facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--fg); }
+  .facts li { padding: 22px 20px 24px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+  .facts li:not(:nth-child(3n+1)) { padding-left: 20px; border-left: 1px solid var(--line); }
+  .facts .k { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4.6vw, 42px); line-height: 1; color: var(--accent); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+  .facts span { font-size: 15.5px; }
+  @media (max-width: 720px) {
+    .facts { grid-template-columns: 1fr; }
+    .facts li, .facts li:not(:nth-child(3n+1)) { padding: 18px 0; border-left: 0; }
+  }</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="in">
+    <a class="brand" href="#about">Андрей Богдевич</a>
+    <nav aria-label="Разделы">
+      <a href="#about">Обо мне</a>
+      <a href="#work">Чем занимаюсь</a>
+      <a href="#facts">Интересные факты</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">  <header class="hero" id="about">
+    <div class="hero-text">
+    <div class="label">Предприниматель · Минск</div>
+    <h1>Андрей<br>Богдевич</h1>
+    <p class="role">Собственник компании БелСтальИмпорт. Больше 20 лет в бизнесе, сейчас ещё и триатлон.</p>
+    <div class="meta">
+      <span>Возраст <b>44</b></span>
+      <span>Город <b>Минск, BY</b></span>
+    </div>
+    </div>
+    <figure class="portrait">
+      <img src="images/portrait.jpg" alt="Андрей Богдевич в городе, в солнечных очках" width="399" height="725">
+    </figure>
+  </header>
+
+  <div class="figures">
+    <div class="fig"><div class="n">20+</div><div class="t">лет в предпринимательстве</div></div>
+    <div class="fig"><div class="n">2011</div><div class="t">год основания БелСтальИмпорт</div></div>
+    <div class="fig"><div class="n">30+</div><div class="t">человек в команде</div></div>
+    <div class="fig"><div class="n">1:17</div><div class="t">проплыл Босфор, август 2026</div></div>
+  </div>
+
+  <section id="values">
+    <div class="label">Как я работаю</div>
+    <h2>Принципы</h2>
+    <ul class="principles">
+      <li><strong>Порядочность</strong><span>Поступать честно, даже когда это невыгодно.</span></li>
+      <li><strong>Ответственность</strong><span>Отвечать за решения и за людей рядом.</span></li>
+      <li><strong>Цена слова</strong><span>Сказал — сделал.</span></li>
+    </ul>
+    <p class="goal">Я постоянно учусь, развиваюсь и ищу новые возможности: и в основном бизнесе, и в новых направлениях.</p>  </section>
+
+  <section id="work">
+    <div class="label">Бизнес</div>
+    <h2>БелСтальИмпорт</h2>
+    <p class="lead">Торговля и поставки металлопроката для строительства и промышленности Беларуси.</p>
+    <dl class="spec">
+      <div><dt>Продукция</dt><dd>Металлопрокат: сортовой и фасонный</dd></div>
+      <div><dt>Клиенты</dt><dd>Строительный и промышленный сектора</dd></div>
+      <div><dt>Поставки</dt><dd>По всей Беларуси, а также в Россию</dd></div>
+      <div><dt>Импорт</dt><dd>Китай, Турция</dd></div>
+      <div><dt>На рынке</dt><dd>С 2011 года</dd></div>
+      <div><dt>Команда</dt><dd>Более 30 человек</dd></div>
+      <div><dt>Сайт</dt><dd><a href="https://www.mirstali.by" target="_blank" rel="noopener">www.mirstali.by</a></dd></div>
+    </dl>
+  </section>
+
+
+
+  <section id="sport">
+    <div class="label">Спорт</div>
+    <h2>Триатлон</h2>
+    <p class="lead">Спорт для меня часть жизни. В 2026 году я решил объединить всё в триатлоне.</p>
+    <ul class="disc">
+      <li>бег</li><li>зал</li><li>бокс</li><li>велосипед</li><li>плавание</li>
+    </ul>
+
+    <div class="photos">
+      <div class="row" style="flex-grow:1.173">
+        <figure style="flex-grow:0.467">
+          <img src="images/bosphorus.jpg" alt="Андрей у табло результатов заплыва через Босфор, категория мужчины 40–44" width="327" height="700">
+          <figcaption>Босфор · 1:17</figcaption>
+        </figure>
+        <figure style="flex-grow:0.706">
+          <img src="images/bike.jpg" alt="Андрей на шоссейном велосипеде показывает большой палец" width="550" height="779">
+          <figcaption>Велосипед</figcaption>
+        </figure>
+      </div>
+      <div class="row" style="flex-grow:1.926">
+        <figure style="flex-grow:0.927">
+          <img src="images/swim.jpg" alt="Андрей в гидрокостюме с медалью на финише заплыва на открытой воде" width="725" height="782">
+          <figcaption>Открытая вода · 2026</figcaption>
+        </figure>
+        <figure style="flex-grow:0.999">
+          <img src="images/run.jpg" alt="Андрей бежит на забеге со стартовым номером" width="840" height="841">
+          <figcaption>Бег · на забеге</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <ol class="races">
+      <li class="race done">
+        <span class="date">Август 2026</span>
+        <span class="name">Заплыв через Босфор<span class="place">Стамбул, Турция</span></span>
+        <span class="stat">Проплыл за 1:17</span>
+      </li>
+      <li class="race">
+        <span class="date">14 февраля 2027</span>
+        <span class="name">Полумарафон<span class="place">Майами, Флорида, США</span></span>
+        <span class="stat" data-date="2027-02-14"></span>
+      </li>
+      <li class="race">
+        <span class="date">23 октября 2027</span>
+        <span class="name">Половина дистанции триатлона<span class="place">Кашкайш, Португалия</span></span>
+        <span class="stat" data-date="2027-10-23"></span>
+      </li>
+    </ol>
+    <p class="goal">Сейчас я пробегаю десятки километров и готовлюсь к Майами. Главная задача: привести форму в порядок и выходить на старт чаще.</p>
+  </section>
+
+  <section id="facts">
+    <div class="label">Интересные факты</div>
+    <h2>Факты обо мне</h2>
+    <ul class="facts">
+      <li><b class="k">1:17</b><span>За столько я проплыл Босфор в августе 2026 года.</span></li>
+      <li><b class="k">3 страны</b><span>Старты в Турции, США и Португалии: Босфор, полумарафон в Майами и полудистанция триатлона в Кашкайше.</span></li>
+      <li><b class="k">5 видов спорта</b><span>Бег, зал, бокс, велосипед и плавание. Триатлон собрал почти всё вместе.</span></li>
+      <li><b class="k">2026</b><span>Год, когда я вписался в триатлон. Через несколько месяцев уже купил слот на половину дистанции.</span></li>
+      <li><b class="k">15 лет</b><span>Столько работает БелСтальИмпорт: компания на рынке с 2011 года, в команде больше 30 человек.</span></li>
+      <li><b class="k">Китай, Турция</b><span>Оттуда мы везём металл, а поставляем по всей Беларуси и в Россию.</span></li>
+    </ul>
+  </section>
+
+  <section id="contacts">    <div class="label">Связаться</div>
+    <h2>Контакты</h2>
+    <p class="lead" style="font-family:var(--font-mono);user-select:all">+375 29 344 70 00</p>
+    <div class="links">
+      <a class="btn" href="https://www.instagram.com/andbogd31" target="_blank" rel="noopener">Instagram @andbogd31</a>
+      <a class="btn alt" href="https://www.mirstali.by" target="_blank" rel="noopener">mirstali.by</a>
+    </div>
+  </section>
+
+  <footer class="label">Андрей Богдевич · Минск</footer>
+</main>
+
+<script>
+  (function () {
+    try {
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      document.querySelectorAll('[data-date]').forEach(function (el) {
+        var p = el.getAttribute('data-date').split('-');
+        var d = new Date(+p[0], +p[1] - 1, +p[2]);
+        var days = Math.round((d - today) / 86400000);
+        if (days > 0) {
+          var m = days % 10, h = days % 100, w = 'дней';
+          if (h < 11 || h > 14) { if (m === 1) w = 'день'; else if (m > 1 && m < 5) w = 'дня'; }
+          el.textContent = 'через ' + days + ' ' + w;
+        } else if (days === 0) {
+          el.textContent = 'сегодня';
+        } else {
+          el.textContent = 'позади';
+        }
+      });
+    } catch (e) {}
+  })();
+</script>
+
+</body>
+</html>
