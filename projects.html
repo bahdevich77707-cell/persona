@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Проекты · Андрей Богдевич</title>
+<meta name="description" content="Проекты Андрея Богдевича: БелСтальИмпорт, триатлон и новые направления.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topnav">
+  <div class="in">
+    <a class="brand gold-text" href="index.html">Андрей Богдевич</a>
+    <nav aria-label="Страницы">
+      <a href="index.html">Главная</a>
+      <a href="work.html">Работа</a>
+      <a href="projects.html" aria-current="page">Проекты</a>
+      <a href="family.html">Семья</a>
+      <a href="travel.html">Путешествия</a>
+      <a href="hobbies.html">Увлечения</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="hero solo">
+    <div class="hero-text">
+      <div class="label">Проекты</div>
+      <h1>Чем я <span class="gold-text">живу</span></h1>
+      <p class="role">Металл остаётся моей основой, а рядом с ним спорт и поиск новых направлений.</p>
+    </div>
+  </header>
+
+  <section id="main-project">
+    <div class="label">Главный проект</div>
+    <h2>БелСтальИмпорт</h2>
+    <p class="lead">Торговля и поставки металлопроката с 2011 года. Команда 30+ человек, более 40 000 тонн металла в год из России, Китая и со всего мира, поставки по всей Беларуси. Среди объектов: Белорусская АЭС, парк «Великий камень», Belexpo и аэропорт Минск.</p>
+    <div class="links"><a class="btn" href="work.html">Подробнее о работе →</a></div>
+  </section>
+
+  <section id="triathlon">
+    <div class="label">Личный проект</div>
+    <h2>Триатлон</h2>
+    <p class="lead">Начал в 2026 году. Цель: привести себя в форму и регулярно выходить на старты. Старты в разных странах для меня ещё и способ путешествовать и проверять себя на прочность.</p>
+    <ol class="races">
+      <li class="race done">
+        <span class="date">Август 2026</span>
+        <span class="name">Заплыв через Босфор<span class="place">Стамбул, Турция</span></span>
+        <span class="stat">Проплыл за 1:17</span>
+      </li>
+      <li class="race done">
+        <span class="date">10 км</span>
+        <span class="name">Минский полумарафон<span class="place">Минск, Беларусь</span></span>
+        <span class="stat">47:41</span>
+      </li>
+      <li class="race done">
+        <span class="date">10 км</span>
+        <span class="name">Забег на 10 км<span class="place">Варшава, Польша</span></span>
+        <span class="stat">Личный рекорд 45:47</span>
+      </li>
+      <li class="race">
+        <span class="date">14 февраля 2027</span>
+        <span class="name">Полумарафон<span class="place">Майами, Флорида, США</span></span>
+        <span class="stat" data-date="2027-02-14"></span>
+      </li>
+      <li class="race">
+        <span class="date">23 октября 2027</span>
+        <span class="name">Половина дистанции триатлона<span class="place">Кашкайш, Португалия</span></span>
+        <span class="stat" data-date="2027-10-23"></span>
+      </li>
+    </ol>
+    <p class="goal">Фото со стартов есть <a href="index.html#sport">на главной странице</a>.</p>
+  </section>
+
+  <section id="new">
+    <div class="label">В поиске</div>
+    <h2>Новые направления</h2>
+    <p class="lead">Чёткой идеи пока нет, и меня это устраивает. Меня тянет в новые направления, как внутри бизнеса, так и за его пределами.</p>
+    <p class="text">Если у вас есть идея, где пригодятся мой опыт, ресурсы и умение доводить дела до конца, давайте поговорим.</p>
+    <div class="links">
+      <a class="btn" href="index.html#contacts">Связаться</a>
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="label">Скоро</div>
+    <h2>Другие проекты</h2>
+    <div class="soon"><b>Раздел дополняется</b>Здесь появятся новые проекты с фото и подробностями.</div>
+  </section>
+
+  <footer class="label">Андрей Богдевич · Минск</footer>
+</main>
+
+<script>
+  (function () {
+    try {
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      document.querySelectorAll('[data-date]').forEach(function (el) {
+        var p = el.getAttribute('data-date').split('-');
+        var d = new Date(+p[0], +p[1] - 1, +p[2]);
+        var days = Math.round((d - today) / 86400000);
+        if (days > 0) {
+          var m = days % 10, h = days % 100, w = 'дней';
+          if (h < 11 || h > 14) { if (m === 1) w = 'день'; else if (m > 1 && m < 5) w = 'дня'; }
+          el.textContent = 'через ' + days + ' ' + w;
+        } else if (days === 0) {
+          el.textContent = 'сегодня';
+        } else {
+          el.textContent = 'позади';
+        }
+      });
+    } catch (e) {}
+  })();
+</script>
+
+</body>
+</html>
